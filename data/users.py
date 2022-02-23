@@ -20,6 +20,8 @@ class User(SqlAlchemyBase):
     hashed_password = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     modified_date = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now)
 
+    jobs = orm.relation("Jobs", back_populates='team_lead')
+
     def __repr__(self):
         return f'<User> {self.id} {self.name} {self.email}'
 

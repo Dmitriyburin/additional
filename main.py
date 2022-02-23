@@ -27,7 +27,6 @@ USERS = [
         "address": "module_1",
         "email": "scott_chief@mars.org",
         'hashed_password': generate_password_hash('password1'),
-        'modified_date': datetime.datetime.now(),
     },
     {
         "surname": "Кубышкина",
@@ -38,7 +37,6 @@ USERS = [
         "address": "module_2",
         "email": "darya1960@gmail.com",
         'hashed_password': generate_password_hash('password2'),
-        'modified_date': datetime.datetime.now(),
     },
     {
         "surname": "Завьялова",
@@ -49,7 +47,6 @@ USERS = [
         "address": "module_3",
         "email": "janna.zavyalova@hotmail.com",
         'hashed_password': generate_password_hash('password3'),
-        'modified_date': datetime.datetime.now(),
     },
     {
         "surname": "Бухаров",
@@ -60,9 +57,8 @@ USERS = [
         "address": "module_4",
         "email": "artem99@hotmail.com",
         'hashed_password': generate_password_hash('password4'),
-        'modified_date': datetime.datetime.now(),
     },
-{
+    {
         "surname": "Яблоновская",
         "name": "Елизавета",
         "age": 31,
@@ -71,13 +67,12 @@ USERS = [
         "address": "module_5",
         "email": "elizaveta26091990@yandex.ru",
         'hashed_password': generate_password_hash('password5'),
-        'modified_date': datetime.datetime.now(),
     },
 ]
 
 
-@app.route("/")
-def add_data():
+@app.route("/add_user")
+def add_user():
     db_sess = db_session.create_session()
 
     # Добавление пользователей
@@ -91,9 +86,36 @@ def add_data():
         user.address = usr['address']
         user.email = usr['email']
         user.hashed_password = usr['hashed_password']
-        user.modified_date = usr['modified_date']
 
         db_sess.add(user)
+
+    db_sess.commit()
+    return "Данные добавлены!"
+
+
+@app.route("/add_job")
+def add_data():
+    """
+    team_leader 1
+    job deployment of residential modules 1 and 2
+    work_size 15
+    collaborators 2, 3
+    start_date (now)
+    is_finished False
+    :return:
+    """
+
+    db_sess = db_session.create_session()
+
+    # Добавление пользователей
+    job = Jobs()
+    job.team_leader = 1
+    job.job = 'deployment of residential modules 1 and 2'
+    job.work_size = 15
+    job.collaborators = '2, 3'
+    job.is_finished = False
+
+    db_sess.add(job)
 
     db_sess.commit()
     return "Данные добавлены!"
