@@ -95,16 +95,6 @@ def add_user():
 
 @app.route("/add_job")
 def add_data():
-    """
-    team_leader 1
-    job deployment of residential modules 1 and 2
-    work_size 15
-    collaborators 2, 3
-    start_date (now)
-    is_finished False
-    :return:
-    """
-
     db_sess = db_session.create_session()
 
     # Добавление пользователей
