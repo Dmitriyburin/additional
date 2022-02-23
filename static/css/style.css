@@ -1,0 +1,26 @@
+caption {
+    color: #000;
+    font-weight: 600;
+    font-size: 35px;
+}
+
+.main-h1 {
+    text-align: center;
+}
+
+.main-table {
+    margin: 0 auto;
+    margin-top: 30px;
+    caption-side: top;
+}
+
+.main-th {
+    padding: 5px 40px 5px 5px;
+    background-color: #B4B7AE;
+}
+
+.main-td {
+    padding: 5px 40px 5px 5px;
+    background-color: #d2d5ce;
+
+}
